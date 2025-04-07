@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kolor</title>
+    <title>Kolor, tekst i rozmiar</title>
     <style>
         button {
             padding: 10px 20px;
@@ -19,28 +19,38 @@
 </head>
 <body style="background-color: rgb(22, 21, 21); color:white; text-align: center; font-size: 35px;">
     <br><br><br><br><br><br>
-    <h1>Zmień kolor i tekst</h1>
-    <p>wybierz kolor
+    <h1 id="mainTitle">Zmień kolor, tekst i rozmiar</h1>
+    <p>Wybierz kolor:
     <input type="color" id="kolor" value="#ffffff"></p>
-    <p>wpisz nowy tekst
+    <p>Wpisz nowy tekst:
     <input type="text" id="tekst" placeholder="Wpisz nową treść nagłówka"></p>
-    <button>Aktualizuj</button>
+    <p>Wpisz rozmiar tekstu (w px):
+    <input type="number" id="rozmiar" placeholder="Wpisz rozmiar tekstu"></p>
+    <button id="aktualizujBtn">Aktualizuj</button>
 
     <script>
-        const mainTitle = document.querySelector('h1');
-        const btn = document.querySelector('button');
+        const mainTitle = document.querySelector('#mainTitle');
+        const btn = document.querySelector('#aktualizujBtn');
         const colorInput = document.querySelector('#kolor');
         const textInput = document.querySelector('#tekst');
+        const sizeInput = document.querySelector('#rozmiar');
 
         btn.addEventListener('click', function() {
             const chosenColor = colorInput.value;
             mainTitle.style.color = chosenColor;
 
             const newText = textInput.value;
-            if (newText.trim()) { 
+            if (newText.trim()) {
                 mainTitle.textContent = newText;
-                this.style.backgroundColor = '#716159';
             }
+
+            const textSize = sizeInput.value;
+            if (textSize && textSize > 0) {
+                mainTitle.style.fontSize = textSize + "px";
+            } else if (textSize) {
+                alert("Podaj poprawny rozmiar tekstu w pikselach!");
+            }
+            this.style.backgroundColor = '#716159';
         });
     </script>
 </body>
