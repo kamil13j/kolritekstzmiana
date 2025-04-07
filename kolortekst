@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kolor</title>
+    <style>
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            text-align: center;
+        }
+        input {
+            padding: 5px;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body style="background-color: rgb(22, 21, 21); color:white; text-align: center; font-size: 35px;">
+    <br><br><br><br><br><br>
+    <h1>Zmień kolor i tekst</h1>
+    <p>wybierz kolor
+    <input type="color" id="kolor" value="#ffffff"></p>
+    <p>wpisz nowy tekst
+    <input type="text" id="tekst" placeholder="Wpisz nową treść nagłówka"></p>
+    <button>Aktualizuj</button>
+
+    <script>
+        const mainTitle = document.querySelector('h1');
+        const btn = document.querySelector('button');
+        const colorInput = document.querySelector('#kolor');
+        const textInput = document.querySelector('#tekst');
+
+        btn.addEventListener('click', function() {
+            const chosenColor = colorInput.value;
+            mainTitle.style.color = chosenColor;
+
+            const newText = textInput.value;
+            if (newText.trim()) { 
+                mainTitle.textContent = newText;
+            }
+        });
+    </script>
+</body>
+</html>
